@@ -1,0 +1,393 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+
+}
+
+h2 {
+    color: #333;
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#addTaskBtn {
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    display: block;
+    margin: 10px auto;
+}
+
+#addTaskBtn:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center; /* Aligns checkbox, text, and buttons in a row */
+    justify-content: space-between; /* Ensures elements do not overlap */
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.task-text {
+    flex-grow: 1; /* Allows task text to expand without shifting */
+    margin-left: 10px; /* Creates space between checkbox and text */
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+}
+
+.task-checkbox {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px; /* Creates space between checkbox and task text */
+}
+
+.task-buttons {
+    display: flex;
+    gap: 5px; /* Ensures space between edit and delete buttons */
+}
+
+.edit-button, .delete-button {
+    width: 30px;
+    height: 30px;
+}
+.task-item {
+    display: flex;            /* Arrange elements in a row */
+    align-items: center;      /* Align elements vertically */
+    justify-content: space-between; /* Ensure proper spacing */
+    padding: 10px;
+}
+
+.task-checkbox {
+    margin-right: 10px;       /* Space between checkbox and text */
+}
+
+.task-text {
+    flex-grow: 1;             /* Let text expand within available space */
+    text-align: left;         /* Align text to the left */
+}
+
+button.delete {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 4px;
+}
+
+button.delete:hover {
+    background-color: #c82333;
+}
+
+input[type="text"] {
+    font-size: 12px;
+    padding: 8px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Dark mode styles */
+.dark-mode {
+    background-color: #121212;
+    color: white;
+    
+}
+
+.dark-mode .container {
+    background-color: #1e1e1e;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+   
+}
+
+.dark-mode h2 {
+    color: #ffffff;
+}
+
+.dark-mode input {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.dark-mode button {
+    background-color: #444;
+    color: white;
+}
+
+.dark-mode ul li {
+    background: #333;
+    border: 1px solid #555;
+    color: white;
+}
+
+.dark-mode .completed {
+    color: #bbb;
+}
+
+.dark-mode #darkModeToggle {
+    background-color: transparent;
+    color: white;
+    border-radius: 4px;
+}
+
+.dark-mode #darkModeToggle:hover {
+    background-color: transparent;
+}
+
+.dark-mode #logoutBtn {
+    position: fixed;
+    top:20px;
+    right: 20px;
+    background-color: #c82333;
+}
+
+
+#todoContainer {
+    position: relative;   /* This makes the button stay inside the box */
+    width: 400px;        /* Adjust width as needed */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#darkModeToggle {
+    position: fixed;
+    top: 50px;
+    right: 470px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+} 
+
+/* Style for task items */ 
+.task {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background: #fff; 
+    padding: 8px; 
+    margin: 5px 0;
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    position: relative; 
+    transition: transform 0.3s, opacity 0.3s; 
+}
+
+/* Delete button */ 
+button.delete { 
+    background-color: #dc3545; 
+    color: white; 
+    border-radius: 4px; 
+    border: none; 
+    cursor: pointer;
+    padding: 5px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Style the checkbox */
+.task-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Default (Light Mode) */
+:root {
+    --bg-color: #f8f9fa;    /* Light background */
+    --text-color: #333;     /* Dark text */
+    --task-bg: #ffffff;     /* Task background */
+    --border-color: #ddd;   /* Light border */
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1e1e1e;  /* Dark background */
+        --text-color: #f8f9fa; /* Light text */
+        --task-bg: #2c2c2c;    /* Dark task background */
+        --border-color: #444;  /* Darker border */
+    }
+}
+
+/* Apply Background Colors */ 
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* To-Do List Container */
+.to-do-container {
+    background-color: var(--task-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* Task Items */
+.task-item {
+    background-color: var(--task-bg);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Buttons */
+.edit-button, .delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: background 0.3s;
+}
+
+.delete-button:hover {
+    background: rgba(255, 0, 0, 0.2);
+}
+
+.edit-button:hover {
+    background: rgba(255, 165, 0, 0.2);
+}
+/*Toast notification styles */
+.toast{
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+.toast.show{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Apply styles ONLY in dark mode */
+.dark-mode .container {
+    position: relative;
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px;
+    background: black;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Soft white shadow */
+}
+
+/* Glowing border effect */
+.dark-mode .container::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, red, yellow, green, cyan, blue, magenta, red);
+    z-index: -1;
+    border-radius: 15px;
+    filter: blur(8px);
+    animation: glow 3s infinite linear;
+}
+
+@keyframes glow {
+    0% { filter: blur(8px) hue-rotate(0deg); }
+    100% { filter: blur(8px) hue-rotate(360deg); }
+}
+
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #218838;
+}
+
+#logoutBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#logoutBtn:hover {
+    background-color: #c82333;
+}

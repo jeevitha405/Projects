@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="container">
+        <button id="logoutBtn">Logout</button>
+        <button id="darkModeToggle"> <span id="darkModeIcon"> ☽ </span></button>
+        <h2>To-Do List</h2>
+        <input type="text" id="taskInput" placeholder="Enter a task...">
+        <button id="addTaskBtn" type="button">Add Task</button>
+        <ul id="taskList"></ul>
+        <button id="clearTaskBtn">Clear All Tasks</button>
+        
+    </div>
+    <div id="toast" class="toast"></div>
+    <script>
+        if (!localStorage.getItem("loggedInUser")) {
+            
+            window.location.href = "login.html";
+        }
+    </script>
+    <script src="script1.js"></script>
+</body>
+</html>
